@@ -1,0 +1,36 @@
+<p>parent works!</p>
+<div style="border: solid 1px black; padding:15px;">
+  <h3 [ngClass]="classDummy">Parent Component</h3>
+  <p [ngStyle]="styleDummy">Map Syntax Example</p>
+  <!--  <p [ngStyle]="{'strike': 'deleted', bold: important, 'has-error': error}">Map Syntax Example</p>
+ -->
+
+  <label>
+     <input type="checkbox" >
+     deleted (apply "strike" class)
+  </label><br>
+  <label>
+     <input type="checkbox" >
+     important (apply "bold" class)
+  </label><br>
+  <label>
+     <input type="checkbox" >
+     error (apply "has-error" class)
+  </label>
+  <hr>
+
+  <p ng-class="style">Using String Syntax</p>
+<input type="text" ng-model="style"
+       placeholder="Type: bold strike red" aria-label="Type: bold strike red">
+<hr>
+
+</div>
+
+
+Message:{{message}}
+<app-child (messageEvent)="receiveMessage($event)"
+[firstName]="firstName"
+[lastName]="lastName"
+[siblings]="siblings"
+></app-child>
+

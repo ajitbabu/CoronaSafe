@@ -1,0 +1,23 @@
+<p>child works!</p>
+<div style="border: solid 1px black;">
+    <p>child Component</p>
+    <br>
+    First Name: {{ firstName }}
+    <br>
+    Last Name: {{ lastName }}
+    <br>
+    Siblings:
+    <br>
+    <span *ngFor="let sibling of siblings">
+      <span *ngIf="firstName==sibling" else #elseBlock >
+        <h6 my-error> {{ sibling }}</h6>
+      </span>
+      <span #elseBlock>
+        {{ sibling }}<br>
+      </span>
+
+    </span>
+
+    <button (click)="sendMessage()">Send Message</button>
+    <h1 my-error>Hello {{firstName}}</h1>
+</div>

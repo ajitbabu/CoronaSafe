@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="jumbotron">
+    <form #doctorForm = "ngForm" class="btn btn" (ngSubmit)="addDoctor(doctorForm)">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" #nameDoctor="ngModel" ngModel required name="name" pattern="[a-zA-Z ]*">
+      </div>
+      <div *ngIf="nameDoctor.touched" >
+       <div *ngIf="nameDoctor.errors?.required" class="alert alert-danger">
+        Name is Required
+       </div>
+       <div *ngIf="nameDoctor.errors?.pattern" class="alert alert-danger">
+        Name is Invalid
+       </div>
+      </div>
+      <div class="form-group">
+        <label for="contact">Contact:</label>
+        <input type="text" class="form-control" #contactDoctor="ngModel" minlength="10" maxlength="10" ngModel required name="contact" pattern="[0-9]*">
+      </div>
+      <div *ngIf="contactDoctor.touched" >
+        <div *ngIf="contactDoctor.errors?.required" class="alert alert-danger">
+         Contact is Required
+        </div>
+        <div [hidden]="!contactDoctor?.hasError('minlength')" class="alert alert-danger">
+          Contact is Invalid
+         </div>
+       </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="text" class="form-control" #emailDoctor="ngModel" ngModel required name="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+      </div>
+      <div *ngIf="emailDoctor.touched" >
+        <div *ngIf="emailDoctor.errors?.required" class="alert alert-danger">
+         Email is Required
+        </div>
+        <div *ngIf="emailDoctor.errors?.pattern" class="alert alert-danger">
+          Email is Invalid
+         </div>
+       </div>
+       <div class="form-group">
+        <label for="specialization">Specialization:</label>
+          <select type="text" class="form-control" #specializationDoctor="ngModel" ngModel required name="specialization" placeholder="specialization">
+          <option value="" disabled selected>Select </option>
+          <option value="Gynecologist">Gynecologist </option>
+          <option value="Pediatrician">Pediatrician</option>
+          <option value="Surgeon">Surgeon</option>
+          <option value="Psychiatrist">Psychiatrist</option>
+          <option value="Cardiologist">Cardiologist</option>
+        </select>
+      </div>
+      <button type="submit" name="button" class="btn btn-success" [disabled]="doctorForm.invalid">Add Doctor</button>
+    </form>
+  </div>
+
+<div>
+  <span>Patient Name:</span>
+  {{patientName}}
+</div>
+<h1>Doctors:</h1>
+<ul class="list-group">
+  <li *ngFor="let doctor of doctorList" class="list-group-item">
+    {{doctor.name}}
+  </li>
+
+</ul>
+
+</div>
+
